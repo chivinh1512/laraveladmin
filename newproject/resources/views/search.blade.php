@@ -17,7 +17,7 @@
                                     <div class="col-sm-3">
                                         <div class="single-item">
                                             <div class="single-item-header">
-                                                <a href="/productdetail/{{$p->id}}"><img src="source/image/product/{{$p->img}}.jpg" alt="" width="200px" height="200px"></a>
+                                                <a href="/productdetail/{{$p->id}}"><img src="source/image/product/{{$p->img}}" alt="" width="200px" height="200px"></a>
                                             </div>
                                             <div class="single-item-body">
                                                 <p class="single-item-title">{{$p->name}}</p>

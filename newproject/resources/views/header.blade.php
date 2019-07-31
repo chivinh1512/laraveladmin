@@ -9,9 +9,10 @@
 				</div>
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
-						<li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
-						<li><a href="/signup">Đăng kí</a></li>
-						<li><a href="/login">Đăng nhập</a></li>
+						@if (Auth::check())
+						<li><a href="#"><i class="fa fa-user"></i>Xin chào:{{Auth::user()->name}}</a></li>
+						<li><a href="/logout">Đăng xuất</a></li>
+						@endif
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -20,7 +21,7 @@
 		<div class="header-body">
 			<div class="container beta-relative">
 				<div class="pull-left">
-					<a href="/" id="logo"><img src="source/assets/dest/images/logo-cake.png" width="200px" alt=""></a>
+					<a href="/" id="logo"><img src="source/image/logo/logo-cake.png" width="200px" alt=""></a>
 				</div>
 				<div class="pull-right beta-components space-left ov">
 					<div class="space10">&nbsp;</div>
