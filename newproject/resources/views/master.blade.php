@@ -20,6 +20,7 @@
 	@include('header')
 	@yield ('content')
 	<!-- include js files -->
+	<script src="/js/jquery-3.4.1.min.js"></script>
 	<script src="source/assets/dest/js/jquery.js"></script>
 	<script src="source/assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -44,6 +45,16 @@
 			}}
 		)
 	})
+	</script>
+	<script>
+		$(document).ready(function () {
+			$(".productqty").change(function () {
+				 productqty=$(this).val();
+				 productprice=$(this).parent().parent().find('.productprice').html();
+				 total =  parseInt(productqty) * parseInt(productprice);
+				 total = $(this).parent().parent().find('.amount').html(total);
+			});
+		});
 	</script>
 </body>
 </html>

@@ -20,19 +20,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/insert','InsertController@insert');
     Route::get('/product','getallproductController@getallproduct');
     Route::get('/','homeController@home');
+    Route::get('/addproduct/{product_id}','homeController@post_card');
+    Route::get('/shoppingcart','ShoppingcartController@showcart');
+
+
     Route::get('/product/{listproduct}','getlistproductController@getlistproduct');
     Route::get('/productdetail/{detail}','getproductdetailController@getproductdetail');
     Route::get('/admin','AdminController@admin');
 });
 
     /* QLloại */
-    Route::get('/qlcategory','QlcategoryController@getcategory');
-    Route::get('/qlcategory/delete/{id}','QlcategoryController@deletecategory');
-    Route::post('/qlcategory','QlcategoryController@postcategory');
-    Route::get('/qlcategory/edit/{id}','QlcategoryController@geteditcategory');
-    Route::post('/qlcategory/edit/{id}','QlcategoryController@postedit');
-
-
+Route::group(['prefix' => 'qlcategory'],function(){
+    Route::get('','QlcategoryController@getcategory');
+    Route::get('delete/{id}','QlcategoryController@deletecategory');
+    Route::post('','QlcategoryController@postcategory');
+    Route::get('/edit/{id}','QlcategoryController@geteditcategory');
+    Route::post('/edit/{id}','QlcategoryController@postedit');
+});
     /* QLSản phẩm */
     Route::get('/qlproduct','QlproductController@getproductandcategory');
     Route::get('/qlproduct/delete/{id}','QlproductController@deleteproduct');
@@ -43,6 +47,7 @@ Route::middleware('auth')->group(function () {
 //
 
 Auth::routes();
+
 
 
 ?>

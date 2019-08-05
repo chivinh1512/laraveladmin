@@ -34,48 +34,32 @@
 
 					<div class="beta-comp">
 						<div class="cart">
-							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (Trống) <i class="fa fa-chevron-down"></i></div>
+							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng <i class="fa fa-chevron-down"></i></div>
 							<div class="beta-dropdown cart-body">
-								<div class="cart-item">
-									<div class="media">
-										<a class="pull-left" href="#"><img src="source/assets/dest/images/products/cart/1.png" alt=""></a>
-										<div class="media-body">
-											<span class="cart-item-title">Sample Woman Top</span>
-											<span class="cart-item-options">Size: XS; Colar: Navy</span>
-											<span class="cart-item-amount">1*<span>$49.50</span></span>
-										</div>
-									</div>
-								</div>
-
-								<div class="cart-item">
-									<div class="media">
-										<a class="pull-left" href="#"><img src="source/assets/dest/images/products/cart/2.png" alt=""></a>
-										<div class="media-body">
-											<span class="cart-item-title">Sample Woman Top</span>
-											<span class="cart-item-options">Size: XS; Colar: Navy</span>
-											<span class="cart-item-amount">1*<span>$49.50</span></span>
-										</div>
-									</div>
-								</div>
-
-								<div class="cart-item">
-									<div class="media">
-										<a class="pull-left" href="#"><img src="source/assets/dest/images/products/cart/3.png" alt=""></a>
-										<div class="media-body">
-											<span class="cart-item-title">Sample Woman Top</span>
-											<span class="cart-item-options">Size: XS; Colar: Navy</span>
-											<span class="cart-item-amount">1*<span>$49.50</span></span>
-										</div>
-									</div>
-								</div>
-
+								@php $total = 0; @endphp
+								@if((Session::get('cart')))
+								@foreach (Session::get('cart') as $products)
+										@foreach ($products as $product)
+											<div class="cart-item">
+												<div class="media">
+													<a class="pull-left" href="#"><img src="source/image/product/{{$product['img']}}" alt=""></a>
+													<div class="media-body">
+														<span class="cart-item-title">{{$product['name']}} </span>
+														<span class="cart-item-amount"><span>{{$product['amount']}} x </span><span>{{number_format($product['price'])}}đ</span> = <span>{{number_format($product['amount']*$product['price'])}}đ </span>
+													</div>
+												</div>
+											</div>
+											@php $total = $total + $product['amount']*$product['price'] @endphp
+										@endforeach
+								@endforeach
+								@endif
 								<div class="cart-caption">
-									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">$34.55</span></div>
+									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value"> {{ number_format($total)}}đ </span></div>
 									<div class="clearfix"></div>
 
 									<div class="center">
 										<div class="space10">&nbsp;</div>
-										<a href="checkout.html" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
+										<a href="/shoppingcart" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
 									</div>
 								</div>
 							</div>
