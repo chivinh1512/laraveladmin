@@ -1,5 +1,8 @@
 @extends('master')
 @section('content')
+	@if(session('success'))
+		<div class="alert alert-success" style="text-align: center;font-size: 30px">{{session('success')}} </div>
+	@endif
 <div class="inner-header">
 		<div class="container">
 			<div class="pull-left">
@@ -39,8 +42,9 @@
 												<span>{{$pro->price}}</span>
 											</p>
 										</div>
+
 										<div class="single-item-caption">
-											<a class="add-to-cart pull-left" href="/addproduct/{{$pro->id}}"><i class="fa fa-shopping-cart"></i></a>
+											<a class="add-to-cart pull-left" href="/addproduct/{{$pro->id}}" ><i class="fa fa-shopping-cart"></i></a>
 											<a class="beta-btn primary" href="/productdetail/{{$pro->id}}">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>

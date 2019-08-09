@@ -7,7 +7,7 @@
             </div>
             <div class="pull-right">
                 <div class="beta-breadcrumb font-large">
-                    <a href="index.html">Home</a> / <span>Shopping Cart</span>
+                    <a href="/">Home</a> / <span>Shopping Cart</span>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -31,66 +31,78 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <form action="" method="post">
+                        @csrf()
                     @if((Session::get('cart')))
+                        @php $j = 0;@endphp
+                        @php $totalall = 0; @endphp
+                        @foreach (Session::get('cart') as $products)
+
+                            @foreach ($products as $key => $product)
 
 
+                                <input type="hidden" name="idproduct[]" value="{{$key}}">
 
-                    @foreach (Session::get('cart') as $products)
-                        @foreach ($products as $key => $product)
-                    <tr class="cart_item">
-                        <td class="product-name">
-                            <div class="media">
-                                <img class="pull-left" src="source/image/product/{{$product['img']}}" width="80px" height="80px" alt="">
-                                <div class="media-body">
-                                    <p class="font-large table-title">{{$product['name']}}</p>
-                                    <a class="table-edit" href="#"> </a>
-                                </div>
-                            </div>
-                        </td>
+                                <tr class="cartitem">
+                                    <td class="product-name">
+                                        <div class="media">
+                                            <img class="pull-left" src="source/image/product/{{$product['img']}}" width="80px" height="80px">
+                                            <div class="media-body">
+                                                <p class="font-large table-title">{{$product['name']}}</p>
+                                                <a class="table-edit" href="#"> </a>
+                                            </div>
+                                        </div>
+                                    </td>
 
-                        <td >
-                            <span class="productprice">{{$product['price']}}</span>
-                        </td>
+                                    <td>
+                                        <span class="productprice"> {{$product['price']}} </span>
+                                    </td>
 
-                        <td class="product-status">
-                            In Stock
-                        </td>
+                                    <td class="product-status">
+                                        In Stock
+                                    </td>
+                                    <td>
+                                        <select class="productqty" name="amount[]">
+                                            @for($i=1;$i<11;$i++)
+                                                <option value="{{$i}}" @php if($i==$product['amount']){echo 'selected';} @endphp >{{$i}}</option>
+                                            @endfor
+                                        </select>
+                                    </td>
+                                    <td id="total">
+                                        <span class="amount"> {{$product['amount']*$product['price']}}</span>
+                                    </td>
+                                    @php $totalall = $totalall + $product['amount']*$product['price'] @endphp
+                                    <td class="productremove">
 
-                        <td>
-                            <select class="productqty">
-                                @for($i=1;$i<6;$i++)
-                                <option value="{{$i}}" @php if($i==$product['amount']){echo 'selected';} @endphp >{{$i}}</option>
-                                @endfor
-                            </select>
-                        </td>
+                                        <a data-url="{{url("/removeproduct/{$key}?stt={$j}")}}" class="remove" title="Remove this item"><i class="fa fa-trash-o"></i></a>
 
-                        <td id="total">
-                            <span class="amount" > {{number_format($product['amount']*$product['price'])}}</span>
-                        </td>
-
-                        <td class="product-remove">
-                            <a href="#" class="remove" title="Remove this item"><i class="fa fa-trash-o"></i></a>
-                        </td>
-                    </tr>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            @php $j += 1;@endphp
                         @endforeach
-                    @endforeach
                     @endif
-                    </tbody>
 
+                    @if(isset($totalall))
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>
+                                <span class="totalall"> {{$totalall}}  </span>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
                     <tfoot>
                     <tr>
                         <td colspan="6" class="actions">
 
                             <div class="coupon">
-                                <label for="coupon_code">Coupon</label>
-                                <input type="text" name="coupon_code" value="" placeholder="Coupon code">
-                                <button type="submit" class="beta-btn primary" name="apply_coupon">Apply Coupon <i class="fa fa-chevron-right"></i></button>
+                                <button type="submit" class="beta-btn primary" name="buy">Đặt hàng <i class="fa fa-chevron-right"></i></button>
                             </div>
-
-                            <button type="submit" class="beta-btn primary" name="update_cart">Update Cart <i class="fa fa-chevron-right"></i></button>
-                            <button type="submit" class="beta-btn primary" name="proceed">Proceed to Checkout <i class="fa fa-chevron-right"></i></button>
                         </td>
                     </tr>
+                    </form>
+                    @endif
                     </tfoot>
                 </table>
                 <!-- End of Shop Table Products -->
@@ -101,7 +113,7 @@
             <div class="cart-collaterals">
 
                 <form class="shipping_calculator pull-left" action="#" method="post">
-                    <h2><a href="#" class="shipping-calculator-button">Calculate Shipping <span>↓</span></a></h2>
+
 
                     <section class="shipping-calculator-form " style="display: none;">
 
@@ -122,12 +134,7 @@
                     </section>
                 </form>
 
-                <div class="cart-totals pull-right">
-                    <div class="cart-totals-row"><h5 class="cart-total-title">Cart Totals</h5></div>
-                    <div class="cart-totals-row"><span>Cart Subtotal:</span> <span>$188.00</span></div>
-                    <div class="cart-totals-row"><span>Shipping:</span> <span>Free Shipping</span></div>
-                    <div class="cart-totals-row"><span>Order Total:</span> <span>$188.00</span></div>
-                </div>
+
 
                 <div class="clearfix"></div>
             </div>

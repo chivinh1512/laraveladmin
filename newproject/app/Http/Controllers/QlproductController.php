@@ -13,7 +13,7 @@ class QlproductController extends BaseController
 {
     public function getproductandcategory(){
         $dataproduct['dataproduct']= product::orderBy('id','desc')
-            ->paginate(4);
+            ->paginate(8);
         $datacategory['datacategory']= category::all();
         return view('qlproduct',$dataproduct,$datacategory);
     }

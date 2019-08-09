@@ -1,5 +1,8 @@
 @extends('master')
 @section('content')
+    @if(session('success'))
+        <div class="alert alert-success" style="text-align: center;font-size: 30px">{{session('success')}} </div>
+    @endif
     <div class="rev-slider">
         <div class="fullwidthbanner-container">
             <div class="fullwidthbanner">
