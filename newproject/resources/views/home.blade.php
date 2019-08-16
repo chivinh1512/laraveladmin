@@ -1,5 +1,8 @@
 @extends('master')
 @section('content')
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
     @if(session('success'))
         <div class="alert alert-success" style="text-align: center;font-size: 30px">{{session('success')}} </div>
     @endif
@@ -12,7 +15,7 @@
                             @foreach($slide as $sl)
                                 <li data-transition="boxfade" data-slotamount="20" class="active-revslide current-sr-slide-visible" style="width: 100%; height: 100%; overflow: hidden; visibility: inherit; opacity: 1; z-index: 20;">
                                     <div class="slotholder" style="width:100%;height:100%;" data-duration="undefined" data-zoomstart="undefined" data-zoomend="undefined" data-rotationstart="undefined" data-rotationend="undefined" data-ease="undefined" data-bgpositionend="undefined" data-bgposition="undefined" data-kenburns="undefined" data-easeme="undefined" data-bgfit="undefined" data-bgfitend="undefined" data-owidth="undefined" data-oheight="undefined">
-                                        <div class="tp-bgimg defaultimg" data-lazyload="undefined" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" data-lazydone="undefined" src="source/image/slide/{{$sl->img}}.jpg" data-src="source/image/slide/{{$sl->img}}.jpg" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('source/image/slide/{{$sl->img}}.jpg'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
+                                        <div class="tp-bgimg defaultimg" data-lazyload="undefined" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" data-lazydone="undefined" src="source/image/slide/{{$sl->img}}.png" data-src="source/image/slide/{{$sl->img}}.png" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('source/image/slide/{{$sl->img}}.png'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
                                         </div>
                                     </div>
                                 </li>
@@ -77,4 +80,7 @@
             </div> <!-- .main-content -->
         </div> <!-- #content -->
     </div> <!-- .container -->
+        </div>
+        <div class="col-md-1"></div>
+    </div>
 @endsection

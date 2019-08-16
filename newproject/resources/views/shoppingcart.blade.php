@@ -1,5 +1,8 @@
 @extends('master')
 @section('content')
+    @if(session('ordered'))
+        <div class="alert alert-success" style="text-align: center;font-size: 30px">{{session('ordered')}} </div>
+    @endif
     <div class="inner-header">
         <div class="container">
             <div class="pull-left">
@@ -72,6 +75,7 @@
                                         <span class="amount"> {{$product['amount']*$product['price']}}</span>
                                     </td>
                                     @php $totalall = $totalall + $product['amount']*$product['price'] @endphp
+
                                     <td class="productremove">
 
                                         <a data-url="{{url("/removeproduct/{$key}?stt={$j}")}}" class="remove" title="Remove this item"><i class="fa fa-trash-o"></i></a>
@@ -85,9 +89,12 @@
 
                     @if(isset($totalall))
                         <tr>
-                            <td colspan="4"></td>
+                            <td colspan="4">
+                               Ghi chú: <input type="text" class="form-control" name="note"><br>
+                            </td>
                             <td>
                                 <span class="totalall"> {{$totalall}}  </span>
+                                <input type="hidden" class="totalall" name="totalall" value="{{$totalall}}">
                             </td>
                             <td></td>
                         </tr>
@@ -97,7 +104,7 @@
                         <td colspan="6" class="actions">
 
                             <div class="coupon">
-                                <button type="submit" class="beta-btn primary" name="buy">Đặt hàng <i class="fa fa-chevron-right"></i></button>
+                                <button type="submit" class="beta-btn primary">Đặt hàng <i class="fa fa-chevron-right"></i></button>
                             </div>
                         </td>
                     </tr>

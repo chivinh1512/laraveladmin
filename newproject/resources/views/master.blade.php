@@ -58,7 +58,11 @@
             $(this).parent().parent().find('.amount').html(total);
             test=parseInt(total)-parseInt(oldprice);
             newtotal=parseInt(oldtotal)+parseInt(test);
-            newtotal=$('.totalall').html(newtotal);
+            $('.totalall').html(newtotal);
+            $('.totalall').val(newtotal);
+        });
+        $('.ab').click(function () {
+            $("#getfile").click();
         });
         $(".remove").click(function () {
             cartitem=$(this).parent().parent().find('.remove').html();

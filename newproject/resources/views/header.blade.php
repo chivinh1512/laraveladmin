@@ -1,16 +1,19 @@
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
 <div id="header">
 		<div class="header-top">
 			<div class="container">
 				<div class="pull-left auto-width-left">
 					<ul class="top-menu menu-beta l-inline">
-						<li><a href=""><i class="fa fa-home"></i> 90-92 Lê Thị Riêng, Bến Thành, Quận 1</a></li>
-						<li><a href=""><i class="fa fa-phone"></i> 0163 296 7751</a></li>
+						<li><a href=""><i class="fa fa-home"></i> 780 Hưng Phú, phường 10, quận 8</a></li>
+						<li><a href=""><i class="fa fa-phone"></i> 0903459065</a></li>
 					</ul>
 				</div>
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
 						@if (Auth::check())
-						<li><a href="#"><i class="fa fa-user"></i>Xin chào:{{Auth::user()->name}}</a></li>
+						  <li><a href="/profile"><i class="fa fa-user"></i>Xin chào:{{Auth::user()->name}}</a></li>
 						<li><a href="/logout">Đăng xuất</a></li>
 						@endif
 					</ul>
@@ -21,13 +24,14 @@
 		<div class="header-body">
 			<div class="container beta-relative">
 				<div class="pull-left">
-					<a href="/" id="logo"><img src="source/image/logo/logo-cake.png" width="200px" alt=""></a>
+					<a href="/" id="logo"><img style=" border-radius: 50%;" src="source/image/logo/logo.jpg" width="150px" alt=""></a>
 				</div>
+				<br>
 				<div class="pull-right beta-components space-left ov">
 					<div class="space10">&nbsp;</div>
 					<div class="beta-comp">
 						<form role="search" method="get" id="searchform" action="{{'search'}} ">
-					        <input type="text" value="" name="key" id="s" placeholder="Nhập từ khóa..." />
+					        <input type="text" value="" name="key" id="s" placeholder="Tìm tên sản phẩm hoặc giá..." />
 					        <button class="fa fa-search" type="submit" id="searchsubmit"></button>
 						</form>
 					</div>
@@ -69,7 +73,7 @@
 				<div class="clearfix"></div>
 			</div> <!-- .container -->
 		</div> <!-- .header-body -->
-		<div class="header-bottom" style="background-color: #0277b8;">
+		<div class="header-bottom" style="background-color: #FCD208;">
 			<div class="container">
 				<a class="visible-xs beta-menu-toggle pull-right" href="#"><span class='beta-menu-toggle-text'>Menu</span> <i class="fa fa-bars"></i></a>
 				<div class="visible-xs clearfix"></div>
@@ -85,9 +89,15 @@
 						</li>
 						<li><a href="/about">Giới thiệu</a></li>
 						<li><a href="/contact">Liên hệ</a></li>
+						@if((Auth::user()->level == 1))
+						<li><a href="/admin">Quản trị website</a></li>
+						@endif
 					</ul>
 					<div class="clearfix"></div>
 				</nav>
 			</div> <!-- .container -->
 		</div> <!-- .header-bottom -->
 	</div> <!-- #header -->
+	</div>
+	<div class="col-md-1"></div>
+</div>

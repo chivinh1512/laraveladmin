@@ -9,7 +9,7 @@ class getallproductController extends BaseController
 {
     public function getallproduct(){
         $allproduct=Product::orderBy('id','desc')
-        ->paginate(8);
+        ->paginate(16);
         return view('product',compact('allproduct'));
     }
 }

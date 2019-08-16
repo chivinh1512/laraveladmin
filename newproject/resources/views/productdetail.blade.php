@@ -32,7 +32,6 @@
 									<span>{{$detail->price}}</span>
 								</p>
 							</div>
-
 							<div class="clearfix"></div>
 							<div class="space20">&nbsp;</div>
 
@@ -40,25 +39,7 @@
 								<p>{{$detail->detail}}</p>
 							</div>
 							<div class="space20">&nbsp;</div>
-
-							<p>Options:</p>
 							<div class="single-item-options">
-								<select class="wc-select" name="size">
-									<option>Size</option>
-									<option value="XS">XS</option>
-									<option value="S">S</option>
-									<option value="M">M</option>
-									<option value="L">L</option>
-									<option value="XL">XL</option>
-								</select>
-								<select class="wc-select" name="color">
-									<option>Số lượng </option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
 								<a class="add-to-cart" href="/addproduct/{{$detail->id}}"><i class="fa fa-shopping-cart"></i></a>
 								<div class="clearfix"></div>
 							</div>

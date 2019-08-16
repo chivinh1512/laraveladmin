@@ -29,42 +29,8 @@ class HomeController extends Controller
     {
         $slide=slide::all();
         $newproduct=product::orderBy('id','desc')
-            ->paginate(4);
-
+            ->paginate(8);
         $cart = session()->get('cart');
-
-//        $id=20;
-
-////        unset($cart[4]);
-//// xoa phan tu thu 4 cua mang cart
-//
-//        foreach($cart as $key => $value) {
-//            foreach ($value as $qqq => $valu){
-//                dump($qqq);
-//                if($id == $qqq){
-//                    echo $qqq;
-//                    echo $key;
-//                    unset($cart[$key]);
-////xoa phan tu key =4 cua mang qqq
-//                    dd($cart);
-//                }
-//                echo "<br>";
-//            }
-////
-////
-////
-////
-//        }
-//
-//        exit();
-
-
-
-
-
-
-
-
         return view('/home',compact('slide','newproduct'));
     }
     public function post_card($product_id)
